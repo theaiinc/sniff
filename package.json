@@ -1,7 +1,6 @@
 {
   "name": "@theaiinc/sniff",
   "version": "0.1.0",
-  "private": true,
   "description": "Social listening on Cloudflare Workers: finds posts on Reddit, Hacker News and Stack Exchange that your product could help with, rates them with Workers AI and drafts replies for a person to post.",
   "type": "module",
   "exports": {
@@ -27,5 +26,10 @@
     "esbuild@0.28.1": true,
     "sharp@0.35.4": true,
     "workerd@1.20260925.1": true
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theaiinc/sniff.git"
   }
 }

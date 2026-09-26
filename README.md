@@ -107,3 +107,7 @@ checked). The model then scores it against your product profile:
 - **below 40**: passing mentions, unrelated uses of the words, job ads, self-promotion
 
 Replies are drafted from 50 up, for people looking for a tool, describing a problem, or discussing one.
+
+## License
+
+[MIT](LICENSE)
