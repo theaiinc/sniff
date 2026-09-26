@@ -1,0 +1,31 @@
+{
+  "name": "@theaiinc/sniff",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Social listening on Cloudflare Workers: finds posts on Reddit, Hacker News and Stack Exchange that your product could help with, rates them with Workers AI and drafts replies for a person to post.",
+  "type": "module",
+  "exports": {
+    ".": "./src/core.ts"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "migrate": "wrangler d1 migrations apply SNIFF_DB --remote",
+    "migrate:local": "wrangler d1 migrations apply SNIFF_DB --local",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check:secrets": "node scripts/check-secrets.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260926.1",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.2",
+    "wrangler": "^4.141.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.1": true,
+    "sharp@0.35.4": true,
+    "workerd@1.20260925.1": true
+  }
+}

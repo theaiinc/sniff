@@ -1,0 +1,29 @@
+{
+  // Copied to wrangler.jsonc by `npm run setup` (wrangler.jsonc is git-ignored:
+  // it holds your database id). Secrets are never written here; see README.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sniff",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "assets": { "directory": "./public", "binding": "ASSETS", "run_worker_first": true },
+  "d1_databases": [
+    { "binding": "SNIFF_DB", "database_name": "sniff", "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID", "migrations_dir": "migrations" }
+  ],
+  // Rates posts and drafts replies (Llama 3.3 70B).
+  "ai": { "binding": "AI" },
+  // Every 15 minutes; each source keeps its own pace (see src/core.ts).
+  "triggers": { "crons": ["*/15 * * * *"] },
+  "vars": {
+    // Daily Workers AI allowance in neurons. The account-wide free tier is
+    // 10,000 a day, shared with your other Workers.
+    "SNIFF_AI_DAILY_NEURONS": "5000"
+    // Optional: this deployment's address, for links in webhook digests.
+    // "SNIFF_PUBLIC_URL": "https://sniff.example.workers.dev"
+  }
+  // Secrets (npx wrangler secret put NAME):
+  //   SNIFF_ADMIN_TOKEN   required: 24+ characters, protects the API and page
+  //   STACKEXCHANGE_KEY   optional: stackapps.com key, more Stack Exchange quota
+  //   SNIFF_WEBHOOK_URL   optional: Slack or Discord webhook for hourly digests
+}

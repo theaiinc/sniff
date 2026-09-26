@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+dist/
+# Your deployment: account and database ids live here, never in git.
+wrangler.jsonc
+.dev.vars
+.env*
+*.log
